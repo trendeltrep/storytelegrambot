@@ -81,12 +81,12 @@ def add_db_bot(message):
 @bot.message_handler(commands="database")
 def db_bot(message):
 	length = []
-	with io.open("db.txt","r") as file:
-		length = file.readlines()
+	with io.open("db.txt","r",encoding="utf-8") as file:
+		length = file.readline()
 		file.close()
 
 	with open("db.txt", "rb") as file:
-		if (len(length)==1 and length[0] == ""):
+		if (len(length)==0):
 			bot.send_message(chat_id=message.chat.id,text="База слов пустая")
 			file.close()
 		else:
