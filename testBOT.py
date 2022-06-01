@@ -127,7 +127,7 @@ def story_bot(message):
 		if count <= minNum:
 			bot.send_message(chat_id=message.chat.id,text=f'База слов достаточно мала ({count} < {minNum+1})')
 		else:
-			for i in range (0,random.randint(10,(40)*(random.randint(1,3)))):
+			for i in range (10,random.randint(20,(30)*(random.randint(1,3)))):
 				if i%2 != 0:
 					while True:
 						word = str(newWords[random.randint(0,count-1)])
@@ -148,11 +148,11 @@ def story_bot(message):
 def echo_all(message):
 	try:
 		newString = message.text
-		helpnewString = newString.replace("\n","").replace("\r","").replace("}","").replace("{","").replace("@","").replace(",","").replace(".","").replace("!","").replace("?","").replace("/","").replace(";","").replace("'","").replace('"',"").replace(':',"").replace('%',"").replace('^',"").replace('*',"").replace('-',"").replace('=',"").replace('+',"").replace('_',"").replace('(',"").replace(')',"").replace("\\","")
+		helpnewString = newString.replace("\n","").replace("\r","").replace("}","").replace("{","").replace("@","").replace(",","").replace(".","").replace("!","").replace("?","").replace("/","").replace(";","").replace("'","").replace('"',"").replace(':',"").replace('%',"").replace('^',"").replace('*',"").replace('-',"").replace('=',"").replace('+',"").replace('_',"").replace('(',"").replace('.com',"").replace("https","").replace(')',"").replace("\\","")
 		helpnewString.strip()
 		arr = helpnewString.split(" ")			
 		for i in range (0,len(arr)):
-			if(arr[i] not in words):
+			if(arr[i] not in words and len(arr[i])<15):
 				words.append(arr[i])	
 
 
