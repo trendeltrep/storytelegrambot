@@ -138,21 +138,15 @@ def story_bot(message):
 def echo_all(message):
 	try:
 		newString = message.text
-		newString = newString.split(" ")
-		for i in range(0,len(newString)):
-			if len(newString[i]> 20):
-				newString[i] = ""
-
-		newString = str(newString).__str__().replace('[','').replace(']','').replace(',','').replace('"','').replace("'",'')
-		helpnewString = newString.replace("\n","").replace("\r","").replace("}","").replace("{","").replace("@","").replace(",","").replace(".","").replace("!","").replace("?","").replace("\\","").replace("/","").replace(";","").replace("'","").replace('"',"").replace(':',"").replace('%',"").replace('^',"").replace('*',"").replace('-',"").replace('=',"").replace('+',"").replace('_',"").replace('(',"").replace(')',"")
+		helpnewString = newString.replace("\n","").replace("\r","").replace("}","").replace("{","").replace("@","").replace(",","").replace(".","").replace("!","").replace("?","").replace("/","").replace(";","").replace("'","").replace('"',"").replace(':',"").replace('%',"").replace('^',"").replace('*',"").replace('-',"").replace('=',"").replace('+',"").replace('_',"").replace('(',"").replace(')',"").replace("\\","")
 		helpnewString.strip()
 		arr = helpnewString.split(" ")			
 		for i in range (0,len(arr)):
-			if(arr[i] not in words):
+			if(arr[i] not in words and len(arr[i]<10)):
 				words.append(arr[i])	
 
 
-		if len(words) >=100:
+		if len(words) >=200:
 				with io.open('db.txt','r', encoding="utf-8") as f:
 					lines = f.readlines()
 					
