@@ -96,7 +96,7 @@ def clear_db(message):
 
 	with io.open('db.txt','a') as f:
 		with io.open('db.txt','w') as f:
-			f.write(f'')
+			f.write(f' ')
 	f.close()
 	bot.send_message(chat_id=message.chat.id,text=f'База слов удалена успешно')
 
