@@ -86,7 +86,7 @@ def db_bot(message):
 		file.close()
 
 	with open("db.txt", "rb") as file:
-		if (len(length)==1 and length[1] == ""):
+		if (len(length)==1 and length[0] == ""):
 			bot.send_message(chat_id=message.chat.id,text="База слов пустая")
 			file.close()
 		else:
