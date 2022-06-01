@@ -80,11 +80,15 @@ def add_db_bot(message):
 
 @bot.message_handler(commands="database")
 def db_bot(message):
+	length = []
+	with io.open("db.txt","r") as file:
+		length = file.readlines()
+		file.close()
 
 	with open("db.txt", "rb") as file:
-		length = file.readlines()
 		if (length[0][0]==""):
 			bot.send_message(chat_id=message.chat.id,text="База слов пустая")
+			file.close()
 		else:
 			bot.send_document(chat_id=message.chat.id, document=file)
 			bot.send_message(chat_id=message.chat.id,text="База слов успешно скинута")
