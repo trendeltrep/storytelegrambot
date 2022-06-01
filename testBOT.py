@@ -152,8 +152,7 @@ def echo_all(message):
 		arr = helpnewString.split(" ")			
 		for i in range (0,len(arr)):
 			if(arr[i] not in words):
-				if len(arr[i]<10):
-					words.append(arr[i])	
+				words.append(arr[i])	
 
 
 		if len(words) >=200:
