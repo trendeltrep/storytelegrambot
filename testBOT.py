@@ -82,10 +82,15 @@ def add_db_bot(message):
 def db_bot(message):
 
 	with open("db.txt", "rb") as file:
-		bot.send_document(chat_id=message.chat.id, document=file)
-		file.close()
+		length = file.readlines()
+		if (length[0][0]==""):
+			bot.send_message(chat_id=message.chat.id,text="База слов пустая")
+		else:
+			bot.send_document(chat_id=message.chat.id, document=file)
+			bot.send_message(chat_id=message.chat.id,text="База слов успешно скинута")
+			file.close()
 	
-	bot.send_message(chat_id=message.chat.id,text="База слов успешно скинута")
+	
 
 
 
@@ -96,7 +101,7 @@ def clear_db(message):
 
 	with io.open('db.txt','a') as f:
 		with io.open('db.txt','w') as f:
-			f.write(f' ')
+			f.write(f'')
 	f.close()
 	bot.send_message(chat_id=message.chat.id,text=f'База слов удалена успешно')
 
