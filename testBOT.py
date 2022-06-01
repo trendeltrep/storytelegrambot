@@ -86,13 +86,14 @@ def db_bot(message):
 		file.close()
 
 	with open("db.txt", "rb") as file:
-		if (length[0][0]==""):
+		if (len(length)==1 and length[1] == ""):
 			bot.send_message(chat_id=message.chat.id,text="База слов пустая")
 			file.close()
 		else:
 			bot.send_document(chat_id=message.chat.id, document=file)
 			bot.send_message(chat_id=message.chat.id,text="База слов успешно скинута")
 			file.close()
+	
 	
 	
 
