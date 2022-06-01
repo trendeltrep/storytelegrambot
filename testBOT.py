@@ -138,6 +138,12 @@ def story_bot(message):
 def echo_all(message):
 	try:
 		newString = message.text
+		newString = newString.split(" ")
+		for i in range(0,len(newString)):
+			if len(newString[i]> 20):
+				newString[i] = ""
+
+		newString = str(newString).__str__().replace('[','').replace(']','').replace(',','').replace('"','').replace("'",'')
 		helpnewString = newString.replace("\n","").replace("\r","").replace("}","").replace("{","").replace("@","").replace(",","").replace(".","").replace("!","").replace("?","").replace("\\","").replace("/","").replace(";","").replace("'","").replace('"',"").replace(':',"").replace('%',"").replace('^',"").replace('*',"").replace('-',"").replace('=',"").replace('+',"").replace('_',"").replace('(',"").replace(')',"")
 		helpnewString.strip()
 		arr = helpnewString.split(" ")			
