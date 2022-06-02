@@ -143,7 +143,7 @@ def story_bot(message):
 @bot.message_handler(func=lambda message: True)
 def echo_all(message):
 	try:
-		newString = message.text
+		newString = message.text.lower()
 		helpnewString = newString.replace("\n","").replace("\r","").replace("}","").replace("{","").replace("@","").replace(",","").replace(".","").replace("!","").replace("?","").replace("/","").replace(";","").replace("'","").replace('"',"").replace(':',"").replace('%',"").replace('^',"").replace('*',"").replace('-',"").replace('=',"").replace('+',"").replace('_',"").replace('(',"").replace('.com',"").replace("https","").replace(')',"").replace("\\","")
 		helpnewString.strip()
 		arr = helpnewString.split(" ")			
@@ -154,21 +154,21 @@ def echo_all(message):
 				answer = r.json()
 				
 				if len(answer["def"])!=0:
-					words.append(arr[i])   
+					words.append([arr[i],answer["def"][0]["pos"]])   
 
 				# words.append(arr[i])	
 		if len(words) >=50:
 				with io.open('db.txt','r', encoding="utf-8") as f:
 					lines = f.readlines()	
-					allLinesInText = str(lines).__str__().replace('[','').replace(']','').replace(',','').replace('"','').replace("'",'')
+					allLinesInText = str(lines).__str__().replace('[','').replace(']','').replace(',',';').replace('"','').replace("'",'')
 					allLinesInText.replace("\r"," ").replace("\n"," ")
 					allLinesInText.strip()
 					newWords = allLinesInText.split(" ")
-					helpNewWords = str(newWords).__str__().replace('[','').replace(']','').replace(',','').replace('"','').replace("'",'')
+					helpNewWords = str(newWords).__str__().replace('[','').replace(']','').replace(',',';').replace('"','').replace("'",'')
 					finalText=f'{helpNewWords} '
 					for i in range(0,len(words)):
-						if words[i] not in newWords:
-							finalText+= f"{words[i]} "
+						if words[i][0] not in newWords:
+							finalText+= f"{words[i][0]};{words[i][1]} "
 					finalText = finalText.strip()
 					with io.open("db.txt",'w',encoding="utf-8") as f:
 							f.write(f"{finalText}")
@@ -176,9 +176,5 @@ def echo_all(message):
 				words.clear()
 	except:
 		pass
-
-
-
-		
 		
 bot.infinity_polling()
