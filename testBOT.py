@@ -154,7 +154,8 @@ def echo_all(message):
 				answer = r.json()
 				
 				if len(answer["def"])!=0:
-					words.append([arr[i],answer["def"][0]["pos"]])   
+					if "pos" in answer["def"][0]:
+						words.append([arr[i],answer["def"][0]["pos"]])   
 
 				# words.append(arr[i])	
 		if len(words) >=50:
