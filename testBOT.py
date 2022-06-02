@@ -153,7 +153,7 @@ def echo_all(message):
 				
 				answer = r.json()
 				
-				if len(answer["def"] !=0):
+				if len(answer["def"])!=0:
 					words.append(arr[i])   
 
 				# words.append(arr[i])	
