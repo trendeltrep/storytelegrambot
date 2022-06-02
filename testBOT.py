@@ -20,7 +20,6 @@ def send_welcome(message):
 	
 	markup.row(itembthelp)
 	
-	bot.send_message(message.chat.id, "Choose one option:")
 
 # @bot.message_handler(commands='stop')
 # def stop_bot(message):
