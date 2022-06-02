@@ -149,8 +149,15 @@ def echo_all(message):
 		arr = helpnewString.split(" ")			
 		for i in range (0,len(arr)):
 			if(arr[i] not in words and len(arr[i])<15):
-				words.append(arr[i])	
-		if len(words) >=200:
+				r = requests.get(f"https://dictionary.yandex.net/api/v1/dicservice.json/lookup?key={api_key}&lang=ru-en&text={arr[i]}")
+				
+				answer = r.json()
+				
+				if len(answer["def"] !=0):
+					words.append(arr[i])   
+
+				# words.append(arr[i])	
+		if len(words) >=50:
 				with io.open('db.txt','r', encoding="utf-8") as f:
 					lines = f.readlines()	
 					allLinesInText = str(lines).__str__().replace('[','').replace(']','').replace(',','').replace('"','').replace("'",'')
