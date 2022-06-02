@@ -34,7 +34,8 @@ def request_bot(message):
 	
 	
 	r = requests.get(f"https://dictionary.yandex.net/api/v1/dicservice.json/lookup?key={api_key}&lang=ru-en&text={text}")
-	r.json()
+
+	r = dict(r)
 	answer = r["def"][0]["pos"]
 
 	bot.send_message(chat_id=message.chat.id,text=f"{answer}")
