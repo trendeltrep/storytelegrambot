@@ -30,7 +30,7 @@ def send_welcome(message):
 
 @bot.message_handler(commands='request')
 def request_bot(message):
-	text = "привет"
+	text = "ФІвлрпвпиівта"
 	
 	
 	r = requests.get(f"https://dictionary.yandex.net/api/v1/dicservice.json/lookup?key={api_key}&lang=ru-en&text={text}")
